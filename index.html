@@ -1,25 +1,26 @@
-import zipfile
-import os
-
-html_content = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MilkKing 3D | Soluciones en Manufactura Aditiva & Coleccionables</title>
-  <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- Hoja de estilos externa -->
+  <link rel="stylesheet" href="css/estilos.css">
+  
+  <!-- Fuentes Google: Outfit y Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Top Announcement Bar -->
+  <!-- Barra de Notificación Superior -->
   <div class="top-bar">
     <div class="container top-bar-content">
       <div class="top-announcement">
         <span class="pulse-dot"></span>
-        Envíos a todo México • Acabados de alta precisión y calidad de exhibición
+        Envíos asegurados a todo México • Acabados de alta precisión para coleccionistas y empresas
       </div>
       <div class="top-links">
         <a href="https://www.instagram.com/milkking.3d/" target="_blank" rel="noopener noreferrer" class="social-link">
@@ -34,13 +35,14 @@ html_content = """<!DOCTYPE html>
     </div>
   </div>
 
-  <!-- Header & Navigation -->
+  <!-- Encabezado y Navegación -->
   <header class="site-header">
     <div class="container nav-wrapper">
       <a href="#" class="brand-logo">
         <div class="logo-circle-container">
-          <!-- Logo Oficial SVG MilkKing -->
-          <svg class="brand-badge-svg" viewBox="0 0 120 120" width="46" height="46">
+          <!-- REFERENCIA A IMAGEN LOCAL: img/logo.png con fallback integrado -->
+          <img src="img/logo.png" alt="Logotipo MilkKing 3D" class="brand-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <svg class="brand-badge-svg" viewBox="0 0 120 120" width="46" height="46" style="display:none;">
             <defs>
               <radialGradient id="perlaBg" cx="40%" cy="35%" r="65%">
                 <stop offset="0%" stop-color="#ffffff"/>
@@ -49,7 +51,7 @@ html_content = """<!DOCTYPE html>
               </radialGradient>
             </defs>
             <circle cx="60" cy="60" r="58" fill="url(#perlaBg)" stroke="#d3dbe8" stroke-width="2"/>
-            <text x="60" y="58" text-anchor="middle" font-family="'Outfit', sans-serif" font-weight="900" font-size="20" fill="#021A54" letter-spacing="-0.5">MILK·KING</text>
+            <text x="60" y="58" text-anchor="middle" font-family="'Outfit', sans-serif" font-weight="900" font-size="20" fill="#021A54">MILK·KING</text>
             <text x="60" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="6.5" fill="#021A54" letter-spacing="1.4">DISEÑO E IMPRESIÓN 3D</text>
           </svg>
         </div>
@@ -59,14 +61,14 @@ html_content = """<!DOCTYPE html>
         </div>
       </a>
 
-      <!-- Search Bar -->
+      <!-- Buscador Conectado al Catálogo -->
       <div class="header-search">
         <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         <input type="text" id="searchInput" placeholder="Buscar figuras, llaveros, esculturas..." autocomplete="off">
         <button id="clearSearch" class="clear-search-btn" style="display:none;" aria-label="Limpiar búsqueda">✕</button>
       </div>
 
-      <!-- Action Nav -->
+      <!-- Menú de Acciones -->
       <nav class="nav-actions">
         <a href="#catalogo" class="nav-item">Catálogo</a>
         <a href="#programa-socios" class="nav-item">Socios Comerciales</a>
@@ -86,7 +88,7 @@ html_content = """<!DOCTYPE html>
         <div class="hero-tag">ESTUDIO DE MANUFACTURA ADITIVA DE ALTA PRECISIÓN</div>
         <h1 class="hero-title">Del concepto digital a una <span class="highlight-text">pieza física tangible</span></h1>
         <p class="hero-description">
-          Fabricamos piezas en 3D de alta definición: figuras coleccionables, utilitarios de escritorio, accesorios de moda y proyectos de diseño industrial. Producimos desde una sola unidad personalizada hasta lotes mayoristas para distribuidores y revendedores.
+          Fabricamos piezas en 3D de alta definición: figuras coleccionables, accesorios de escritorio y prototipado industrial. Producimos desde una sola unidad personalizada hasta lotes mayoristas para revendedores y emprendedores.
         </p>
         
         <div class="hero-cta-group">
@@ -97,55 +99,43 @@ html_content = """<!DOCTYPE html>
         <div class="hero-stats">
           <div class="stat-item">
             <span class="stat-number">5.0 ★</span>
-            <span class="stat-label">Calificación de Compradores</span>
+            <span class="stat-label">Evaluación de Compradores</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
             <span class="stat-number">+1,850</span>
-            <span class="stat-label">Piezas Entregadas en México</span>
+            <span class="stat-label">Piezas Entregadas</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
             <span class="stat-number">100%</span>
-            <span class="stat-label">Materiales Premium (PLA+ / PETG)</span>
+            <span class="stat-label">Materiales Grado Ingeniería</span>
           </div>
         </div>
       </div>
 
-      <!-- Hero Gallery Preview -->
+      <!-- Tarjeta Destacada del Taller -->
       <div class="hero-showcase">
-        <div class="showcase-card showcase-main">
-          <div class="showcase-img-wrap" id="heroFeaturedImg">
-            <!-- Representación Busto Medusa Bambu Lab -->
-            <div class="model-preview medusa-preview">
-              <div class="printer-indicator">BAMBU LAB • SERIE P / A</div>
-              <svg viewBox="0 0 200 240" class="vector-art">
-                <defs>
-                  <linearGradient id="medusaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ffffff"/>
-                    <stop offset="50%" stop-color="#e8ecf2"/>
-                    <stop offset="100%" stop-color="#b6c2d6"/>
-                  </linearGradient>
-                </defs>
-                <path d="M100 30 Q125 50 120 90 Q118 115 100 135 Q82 115 80 90 Q75 50 100 30 Z" fill="url(#medusaGrad)"/>
-                <path d="M85 75 Q100 80 115 75 M92 88 Q100 93 108 88 M95 108 Q100 112 105 108" stroke="#7e8da3" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                <!-- Ramificaciones / Soportes de árbol -->
-                <path d="M40 180 Q60 120 78 95 M160 180 Q140 120 122 95 M30 190 Q50 90 70 70 M170 190 Q150 90 130 70" stroke="#cfd8e6" stroke-width="12" stroke-linecap="round" fill="none"/>
-                <path d="M60 210 L140 210 L150 230 L50 230 Z" fill="#9aa9c0"/>
-              </svg>
+        <div class="showcase-card">
+          <div class="showcase-img-wrap">
+            <div class="printer-indicator">BAMBU LAB • SERIE P / A</div>
+            <!-- REFERENCIA A IMAGEN LOCAL: img/medusa.png con fallback -->
+            <img src="img/medusa.png" alt="Busto Medusa Impresión 3D" class="showcase-real-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="vector-art-wrapper bg-taz" style="display:none; width:100%; height:100%;">
+              <div class="watermark-text watermark-white">MILK·KING</div>
             </div>
           </div>
           <div class="showcase-info">
             <div class="badge-tag">Muestra de Taller</div>
             <h3>Busto Escultura "Medusa" en Proceso</h3>
-            <p>Estructuras complejas con soportes tipo árbol y resolución ultrafina de capa.</p>
+            <p>Estructuras complejas producidas con soportes tipo árbol y resolución ultrafina de capa.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Categories Horizontal Navigation (Shop By Category) -->
+  <!-- Filtro Horizontal de Categorías Profesionales -->
   <section class="section-categories">
     <div class="container">
       <div class="section-header text-center">
@@ -186,7 +176,7 @@ html_content = """<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- Gallery & Catalog Section -->
+  <!-- Sección Catálogo / Galería -->
   <section class="section-catalog" id="catalogo">
     <div class="container">
       <div class="catalog-top-bar">
@@ -199,14 +189,12 @@ html_content = """<!DOCTYPE html>
         </div>
       </div>
 
-      <!-- Products Grid -->
-      <div class="products-grid" id="productsGrid">
-        <!-- Generado dinámicamente con JavaScript -->
-      </div>
+      <!-- Contenedor donde script.js inyecta las tarjetas -->
+      <div class="products-grid" id="productsGrid"></div>
     </div>
   </section>
 
-  <!-- Partners & Resellers Program -->
+  <!-- Formulario para Socios & Revendedores -->
   <section class="section-partners" id="programa-socios">
     <div class="container">
       <div class="partners-card">
@@ -214,20 +202,20 @@ html_content = """<!DOCTYPE html>
           <span class="sub-title">Comunidad MilkKing</span>
           <h2 class="partners-title">Programa de Socios Comerciales & Venta Mayorista</h2>
           <p class="partners-desc">
-            Diseñado especialmente para <strong>emprendedores, estudiantes universitarios, profesionistas de oficina y personas en casa</strong> que buscan generar ingresos adicionales mediante la distribución de artículos impresos en 3D bajo demanda, sin requerir inversión en maquinaria propia.
+            Diseñado para <strong>emprendedores, estudiantes universitarios, profesionistas de oficina y personas en casa</strong> que buscan generar ingresos adicionales mediante la distribución de artículos impresos en 3D bajo demanda, sin requerir inversión en maquinaria.
           </p>
           <ul class="partners-benefits">
             <li>
               <span class="check-icon">✓</span>
-              <span><strong>Precios de escala:</strong> Márgenes comerciales desde 10 unidades por pedido.</span>
+              <span><strong>Precios de escala:</strong> Márgenes comerciales competitivos desde 10 unidades por pedido.</span>
             </li>
             <li>
               <span class="check-icon">✓</span>
-              <span><strong>Personalización de marca blanca:</strong> Añade tu logotipo, packaging o empaque individual.</span>
+              <span><strong>Personalización de marca blanca:</strong> Añade tu logotipo, etiquetas o empaque individual.</span>
             </li>
             <li>
               <span class="check-icon">✓</span>
-              <span><strong>Entregas puntuales:</strong> Cronograma de producción garantizado con control de calidad.</span>
+              <span><strong>Garantía de entrega:</strong> Cronograma de producción estricto con control de calidad 100%.</span>
             </li>
           </ul>
         </div>
@@ -265,7 +253,7 @@ html_content = """<!DOCTYPE html>
                 <option value="Lifestyle">Diseño de Interiores & Lifestyle</option>
                 <option value="Mascotas">Accesorios para Mascotas</option>
                 <option value="Vanity">Línea Vanity & Estética</option>
-                <option value="Temporada">Edición de Temporada (Halloween / Navidad)</option>
+                <option value="Temporada">Edición de Temporada</option>
                 <option value="Prototipado">Prototipado & Modelado a Medida</option>
               </select>
             </div>
@@ -285,7 +273,7 @@ html_content = """<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- FAQ Section (Inspired by reference) -->
+  <!-- Preguntas Frecuentes (FAQ) -->
   <section class="section-faq" id="preguntas-frecuentes">
     <div class="container faq-grid">
       <div class="faq-accordion-col">
@@ -345,14 +333,13 @@ html_content = """<!DOCTYPE html>
         </div>
       </div>
 
-      <!-- FAQ Aside Card (Like reference screenshot) -->
       <div class="faq-card-col">
         <div class="faq-contact-box">
           <div class="faq-icon-bubble">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
           </div>
           <h3>¿Tienes un proyecto especial o especificaciones técnicas?</h3>
-          <p>Platica directamente con nuestros diseñadores industriales para evaluar requerimientos de tolerancia, resistencia y cotizaciones a medida.</p>
+          <p>Platica directamente con nuestros diseñadores industriales para evaluar tolerancias, resistencia y cotizaciones a medida.</p>
           <a href="https://wa.me/5215520810586?text=Hola%20te%20escribo%20para%20cotizarte%20mi%20articulo%20impreso%20en%203D,%20estoy%20buscando..." target="_blank" rel="noopener noreferrer" class="btn btn-outline-white btn-block">
             Contactar por WhatsApp
           </a>
@@ -361,7 +348,7 @@ html_content = """<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Pie de Página -->
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-col brand-col">
@@ -404,1776 +391,24 @@ html_content = """<!DOCTYPE html>
     </div>
   </footer>
 
-  <!-- Product Detail Modal -->
+  <!-- Modal de Detalle de Producto -->
   <div class="modal-backdrop" id="productModal" style="display: none;">
     <div class="modal-dialog">
       <button class="modal-close" id="modalCloseBtn" aria-label="Cerrar ventana">✕</button>
-      <div class="modal-body" id="modalBodyContent">
-        <!-- Inyectado por JS -->
-      </div>
+      <div class="modal-body" id="modalBodyContent"></div>
     </div>
   </div>
 
-  <!-- Quick Floating WhatsApp Button -->
+  <!-- Botón Flotante de WhatsApp -->
   <a href="https://wa.me/5215520810586?text=Hola%20te%20escribo%20para%20cotizarte%20mi%20articulo%20impreso%20en%203D,%20estoy%20buscando..." target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn" aria-label="Abrir WhatsApp para cotización">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.075-2.222-.559-1.826-.758-2.997-2.617-3.088-2.738-.09-.121-.735-.979-.735-1.868 0-.89.467-1.328.633-1.503.167-.175.365-.219.486-.219.122 0 .243.002.35.007.112.005.263-.042.412.316.155.374.529 1.292.575 1.385.046.094.076.204.015.326-.061.121-.092.197-.183.303-.091.107-.192.239-.274.321-.091.091-.186.19-.08.372.106.182.472.779 1.014 1.262.698.622 1.287.815 1.469.906.182.091.289.076.395-.045.107-.122.456-.531.577-.714.122-.182.243-.152.41-.091.167.061 1.06.5 1.242.591.182.091.304.137.35.213.045.076.045.441-.099.846z"/></svg>
     <span class="float-tooltip">¿Deseas cotizar? Escríbenos</span>
   </a>
 
-  <!-- Toast Notification -->
+  <!-- Toast Notificación -->
   <div id="toastNotification" class="toast-toast" style="display: none;"></div>
 
-  <script src="js/app.js"></script>
+  <!-- Script JS modular -->
+  <script src="js/script.js"></script>
 </body>
 </html>
-"""
-
-css_content = """:root {
-  --color-primary: #021A54;
-  --color-accent-pink: #FF85BB;
-  --color-soft-pink: #FFCEE3;
-  --color-light-bg: #F5F5F5;
-  --color-white: #FFFFFF;
-  --color-dark: #121826;
-  --color-text-muted: #64748B;
-  --color-border: #E2E8F0;
-  --color-border-card: #ECEFF4;
-  
-  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Outfit', sans-serif;
-  
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 24px;
-  --radius-pill: 9999px;
-  
-  --shadow-sm: 0 2px 4px rgba(2, 26, 84, 0.04);
-  --shadow-card: 0 10px 25px -5px rgba(2, 26, 84, 0.08), 0 8px 10px -6px rgba(2, 26, 84, 0.04);
-  --shadow-float: 0 20px 35px -10px rgba(2, 26, 84, 0.25);
-  
-  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
-
-body {
-  font-family: var(--font-main);
-  background-color: var(--color-light-bg);
-  color: var(--color-dark);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Base Helpers */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: var(--transition);
-}
-
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  transition: var(--transition);
-}
-
-/* Typography */
-h1, h2, h3, h4 {
-  font-family: var(--font-heading);
-  color: var(--color-primary);
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.sub-title {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--color-accent-pink);
-  margin-bottom: 0.5rem;
-}
-
-.section-title {
-  font-size: 2.25rem;
-  margin-bottom: 0.5rem;
-}
-
-.section-subtitle {
-  color: var(--color-text-muted);
-  font-size: 1.05rem;
-  max-width: 600px;
-}
-
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-pill);
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: var(--transition);
-  text-align: center;
-}
-
-.btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  box-shadow: 0 4px 14px rgba(2, 26, 84, 0.2);
-}
-
-.btn-primary:hover {
-  background-color: #042982;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(2, 26, 84, 0.3);
-}
-
-.btn-outline {
-  background-color: transparent;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-}
-
-.btn-outline:hover {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-}
-
-.btn-outline-white {
-  background-color: transparent;
-  color: var(--color-white);
-  border: 2px solid var(--color-white);
-}
-
-.btn-outline-white:hover {
-  background-color: var(--color-white);
-  color: var(--color-primary);
-}
-
-.btn-sm {
-  padding: 0.5rem 1.1rem;
-  font-size: 0.85rem;
-}
-
-.btn-lg {
-  padding: 0.95rem 2rem;
-  font-size: 1.05rem;
-}
-
-.btn-block {
-  width: 100%;
-}
-
-/* Top Announcement Bar */
-.top-bar {
-  background-color: var(--color-primary);
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.82rem;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.top-bar-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.top-announcement {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.pulse-dot {
-  width: 7px;
-  height: 7px;
-  background-color: var(--color-accent-pink);
-  border-radius: 50%;
-  box-shadow: 0 0 8px var(--color-accent-pink);
-}
-
-.top-links {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  color: #ffffff;
-  font-weight: 600;
-}
-
-.social-link:hover {
-  color: var(--color-soft-pink);
-}
-
-.ml-chip {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: rgba(255, 255, 255, 0.15);
-  padding: 0.2rem 0.65rem;
-  border-radius: var(--radius-pill);
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.ml-chip:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-/* Header */
-.site-header {
-  background-color: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(12px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  border-bottom: 1px solid var(--color-border);
-  padding: 0.75rem 0;
-}
-
-.nav-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-}
-
-.brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.brand-badge-svg {
-  filter: drop-shadow(0 2px 5px rgba(2, 26, 84, 0.1));
-}
-
-.brand-text-block {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-name {
-  font-family: var(--font-heading);
-  font-size: 1.35rem;
-  font-weight: 900;
-  color: var(--color-primary);
-  line-height: 1.1;
-  letter-spacing: -0.5px;
-}
-
-.brand-name.light {
-  color: var(--color-white);
-}
-
-.brand-tagline {
-  font-size: 0.62rem;
-  font-weight: 800;
-  color: var(--color-accent-pink);
-  letter-spacing: 1.2px;
-}
-
-.brand-tagline.light {
-  color: var(--color-soft-pink);
-}
-
-.header-search {
-  flex: 1;
-  max-width: 440px;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.search-icon {
-  position: absolute;
-  left: 1rem;
-  color: var(--color-primary);
-  pointer-events: none;
-}
-
-.header-search input {
-  width: 100%;
-  padding: 0.65rem 2.2rem 0.65rem 2.6rem;
-  border-radius: var(--radius-pill);
-  border: 1.5px solid var(--color-border);
-  background-color: var(--color-light-bg);
-  font-size: 0.9rem;
-  color: var(--color-dark);
-  transition: var(--transition);
-}
-
-.header-search input:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  background-color: var(--color-white);
-  box-shadow: 0 0 0 3px rgba(2, 26, 84, 0.1);
-}
-
-.clear-search-btn {
-  position: absolute;
-  right: 0.8rem;
-  background: none;
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.nav-item {
-  font-weight: 600;
-  font-size: 0.92rem;
-  color: var(--color-primary);
-}
-
-.nav-item:hover {
-  color: var(--color-accent-pink);
-}
-
-/* Hero Section */
-.hero-section {
-  padding: 4.5rem 0 3.5rem;
-  background: radial-gradient(circle at top right, rgba(255, 206, 227, 0.35), transparent 50%),
-              radial-gradient(circle at bottom left, rgba(2, 26, 84, 0.04), transparent 40%);
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 3.5rem;
-  align-items: center;
-}
-
-.hero-tag {
-  display: inline-block;
-  background-color: var(--color-soft-pink);
-  color: var(--color-primary);
-  font-weight: 800;
-  font-size: 0.75rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-pill);
-  margin-bottom: 1.25rem;
-  letter-spacing: 0.5px;
-}
-
-.hero-title {
-  font-size: 3.25rem;
-  margin-bottom: 1.25rem;
-  letter-spacing: -1px;
-}
-
-.highlight-text {
-  color: var(--color-accent-pink);
-  position: relative;
-  display: inline-block;
-}
-
-.hero-description {
-  font-size: 1.15rem;
-  color: var(--color-text-muted);
-  margin-bottom: 2rem;
-  line-height: 1.7;
-}
-
-.hero-cta-group {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2.75rem;
-}
-
-.hero-stats {
-  display: flex;
-  align-items: center;
-  gap: 1.75rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(2, 26, 84, 0.08);
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.stat-number {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--color-primary);
-}
-
-.stat-label {
-  font-size: 0.78rem;
-  color: var(--color-text-muted);
-}
-
-.stat-divider {
-  width: 1px;
-  height: 38px;
-  background-color: var(--color-border);
-}
-
-/* Showcase Card */
-.showcase-card {
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  padding: 1.25rem;
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--color-border-card);
-}
-
-.showcase-img-wrap {
-  background-color: #1a1e29;
-  border-radius: var(--radius-md);
-  height: 360px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.printer-indicator {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background: rgba(2, 26, 84, 0.85);
-  backdrop-filter: blur(4px);
-  color: #fff;
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-pill);
-}
-
-.showcase-info {
-  padding: 1.25rem 0.5rem 0.5rem;
-}
-
-.badge-tag {
-  display: inline-block;
-  background: var(--color-soft-pink);
-  color: var(--color-primary);
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 0.2rem 0.6rem;
-  border-radius: var(--radius-pill);
-  margin-bottom: 0.5rem;
-}
-
-.showcase-info h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.35rem;
-}
-
-.showcase-info p {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-}
-
-/* Categories Bar */
-.section-categories {
-  padding: 2.5rem 0 1.5rem;
-}
-
-.category-pills {
-  display: flex;
-  gap: 0.75rem;
-  overflow-x: auto;
-  padding: 0.75rem 0.25rem 1.25rem;
-  scrollbar-width: none;
-}
-
-.category-pills::-webkit-scrollbar {
-  display: none;
-}
-
-.cat-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.25rem;
-  background-color: var(--color-white);
-  color: var(--color-primary);
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  font-size: 0.9rem;
-  font-weight: 700;
-  white-space: nowrap;
-  box-shadow: var(--shadow-sm);
-}
-
-.cat-pill:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-1px);
-}
-
-.cat-pill.active {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border-color: var(--color-primary);
-  box-shadow: 0 4px 12px rgba(2, 26, 84, 0.18);
-}
-
-/* Catalog Section */
-.section-catalog {
-  padding: 2rem 0 5rem;
-}
-
-.catalog-top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 2rem;
-}
-
-.catalog-count {
-  font-size: 0.92rem;
-  color: var(--color-text-muted);
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 1.75rem;
-}
-
-/* Product Card */
-.product-card {
-  background: var(--color-white);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border-card);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: var(--transition);
-  box-shadow: var(--shadow-sm);
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-card);
-  border-color: var(--color-soft-pink);
-}
-
-.product-card-img-wrap {
-  position: relative;
-  height: 270px;
-  background-color: #0c0f17;
-  overflow: hidden;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-card-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-category-badge {
-  position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
-  background: rgba(2, 26, 84, 0.85);
-  backdrop-filter: blur(4px);
-  color: var(--color-white);
-  font-size: 0.65rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-pill);
-  z-index: 2;
-}
-
-.card-discount-badge {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  background: var(--color-accent-pink);
-  color: var(--color-white);
-  font-size: 0.7rem;
-  font-weight: 800;
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--radius-pill);
-  z-index: 2;
-}
-
-.product-card-content {
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.product-meta-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.4rem;
-  font-size: 0.82rem;
-}
-
-.rating-stars {
-  color: #F59E0B;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.sales-count {
-  color: var(--color-text-muted);
-}
-
-.product-card-title {
-  font-size: 1.1rem;
-  margin-bottom: 0.75rem;
-  color: var(--color-primary);
-  line-height: 1.3;
-}
-
-.product-price-row {
-  display: flex;
-  align-items: baseline;
-  gap: 0.35rem;
-  margin-top: auto;
-  margin-bottom: 1rem;
-}
-
-.price-label {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-}
-
-.price-amount {
-  font-family: var(--font-heading);
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--color-primary);
-}
-
-.product-card-actions {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0.5rem;
-}
-
-.btn-card-primary {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  padding: 0.55rem 0.85rem;
-  border-radius: var(--radius-pill);
-  font-size: 0.82rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-}
-
-.btn-card-primary:hover {
-  background-color: #042982;
-}
-
-.btn-icon-action {
-  background: var(--color-light-bg);
-  color: var(--color-primary);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--color-border);
-}
-
-.btn-icon-action:hover {
-  background: var(--color-soft-pink);
-  border-color: var(--color-accent-pink);
-}
-
-/* Studio SVG Mockups */
-.vector-art-wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  background-position: center;
-}
-
-.bg-taz {
-  background: radial-gradient(circle at center, #1b1a20, #08090d);
-}
-
-.bg-toothless {
-  background: radial-gradient(circle at center, #151922, #07090e);
-}
-
-.bg-aliens {
-  background: #f7f8fc;
-}
-
-.bg-panther {
-  background: #f2f3f7;
-}
-
-.watermark-text {
-  position: absolute;
-  font-family: var(--font-heading);
-  font-weight: 900;
-  letter-spacing: -1px;
-  user-select: none;
-  pointer-events: none;
-}
-
-.watermark-white {
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 2.8rem;
-  top: 36%;
-  width: 100%;
-  text-align: center;
-}
-
-.watermark-blue {
-  color: #042299;
-  font-size: 2.8rem;
-  top: 36%;
-  width: 100%;
-  text-align: center;
-}
-
-.watermark-black {
-  color: #0b0d13;
-  font-size: 2.8rem;
-  top: 36%;
-  width: 100%;
-  text-align: center;
-}
-
-/* Partners Section */
-.section-partners {
-  padding: 4rem 0;
-  background: var(--color-white);
-}
-
-.partners-card {
-  background: linear-gradient(135deg, #021A54 0%, #062b88 100%);
-  border-radius: var(--radius-lg);
-  padding: 3.5rem;
-  color: var(--color-white);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
-  box-shadow: var(--shadow-float);
-}
-
-.partners-content .sub-title {
-  color: var(--color-soft-pink);
-}
-
-.partners-title {
-  color: var(--color-white);
-  font-size: 2.3rem;
-  margin-bottom: 1.25rem;
-}
-
-.partners-desc {
-  font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 2rem;
-  line-height: 1.7;
-}
-
-.partners-benefits {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.partners-benefits li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.check-icon {
-  background: var(--color-accent-pink);
-  color: var(--color-white);
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 800;
-  flex-shrink: 0;
-}
-
-.partners-form-container {
-  background: var(--color-white);
-  padding: 2.25rem;
-  border-radius: var(--radius-md);
-  color: var(--color-dark);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.form-title {
-  font-size: 1.35rem;
-  color: var(--color-primary);
-  margin-bottom: 0.25rem;
-}
-
-.form-sub {
-  font-size: 0.82rem;
-  color: var(--color-text-muted);
-  margin-bottom: 1.25rem;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-
-.form-group label {
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  margin-bottom: 0.35rem;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 0.65rem 0.85rem;
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  font-family: inherit;
-  font-size: 0.88rem;
-  color: var(--color-dark);
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
-}
-
-.form-feedback {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.form-feedback.success {
-  background-color: #E8F5E9;
-  color: #2E7D32;
-  border: 1px solid #A5D6A7;
-}
-
-/* FAQ Section */
-.section-faq {
-  padding: 5rem 0;
-}
-
-.faq-grid {
-  display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
-  gap: 3rem;
-  align-items: start;
-}
-
-.accordion {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.accordion-item {
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: var(--transition);
-}
-
-.accordion-item.active {
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-sm);
-}
-
-.accordion-header {
-  width: 100%;
-  padding: 1.15rem 1.35rem;
-  background: transparent;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: left;
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--color-primary);
-}
-
-.acc-icon {
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: var(--color-primary);
-}
-
-.accordion-body {
-  padding: 0 1.35rem 1.15rem;
-  font-size: 0.92rem;
-  color: var(--color-text-muted);
-  display: none;
-  line-height: 1.6;
-}
-
-.accordion-item.active .accordion-body {
-  display: block;
-}
-
-.faq-contact-box {
-  background: var(--color-primary);
-  color: var(--color-white);
-  padding: 2.25rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-}
-
-.faq-icon-bubble {
-  width: 50px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-  color: var(--color-soft-pink);
-}
-
-.faq-contact-box h3 {
-  color: var(--color-white);
-  font-size: 1.35rem;
-  margin-bottom: 0.75rem;
-}
-
-.faq-contact-box p {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.92rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-/* Footer */
-.site-footer {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  padding: 4.5rem 0 0;
-  border-top: 4px solid var(--color-accent-pink);
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 3rem;
-  padding-bottom: 3.5rem;
-}
-
-.footer-desc {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.75);
-  margin-top: 1rem;
-  max-width: 320px;
-  line-height: 1.6;
-}
-
-.footer-heading {
-  color: var(--color-white);
-  font-size: 1.05rem;
-  margin-bottom: 1.25rem;
-  letter-spacing: 0.5px;
-}
-
-.footer-links {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.footer-links a,
-.footer-links li {
-  font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.footer-links a:hover {
-  color: var(--color-soft-pink);
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1.25rem 0;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.bottom-flex {
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Modal */
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(2, 26, 84, 0.6);
-  backdrop-filter: blur(6px);
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-
-.modal-dialog {
-  background: var(--color-white);
-  width: 100%;
-  max-width: 680px;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  position: relative;
-  box-shadow: var(--shadow-float);
-  animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes modalPop {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(2, 26, 84, 0.08);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  z-index: 10;
-}
-
-.modal-product-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.modal-img-col {
-  height: 380px;
-  background: #0d111a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.modal-img-col img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.modal-info-col {
-  padding: 2rem 1.75rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-title {
-  font-size: 1.35rem;
-  margin-bottom: 0.5rem;
-}
-
-.modal-desc {
-  font-size: 0.88rem;
-  color: var(--color-text-muted);
-  margin-bottom: 1.25rem;
-}
-
-.modal-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  margin-top: auto;
-}
-
-/* Toast */
-.toast-toast {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-float);
-  font-size: 0.85rem;
-  font-weight: 600;
-  z-index: 300;
-}
-
-/* Floating WhatsApp */
-.whatsapp-float-btn {
-  position: fixed;
-  bottom: 1.75rem;
-  right: 1.75rem;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 25px rgba(2, 26, 84, 0.4);
-  z-index: 90;
-  transition: var(--transition);
-  border: 2px solid var(--color-soft-pink);
-}
-
-.whatsapp-float-btn:hover {
-  transform: scale(1.08);
-  background-color: #042982;
-}
-
-.float-tooltip {
-  position: absolute;
-  right: 68px;
-  background: var(--color-primary);
-  color: #fff;
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-pill);
-  font-size: 0.78rem;
-  font-weight: 700;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateX(10px);
-  transition: var(--transition);
-}
-
-.whatsapp-float-btn:hover .float-tooltip {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-  .hero-grid,
-  .partners-card,
-  .faq-grid,
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-  
-  .hero-title {
-    font-size: 2.5rem;
-  }
-  
-  .partners-card {
-    padding: 2rem;
-  }
-  
-  .modal-product-layout {
-    grid-template-columns: 1fr;
-  }
-  
-  .modal-img-col {
-    height: 240px;
-  }
-}
-
-@media (max-width: 768px) {
-  .top-links {
-    display: none;
-  }
-  
-  .nav-actions {
-    display: none;
-  }
-  
-  .hero-stats {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-  
-  .stat-divider {
-    display: none;
-  }
-  
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-  
-  .bottom-flex {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-  }
-}
-"""
-
-js_content = """/**
- * MilkKing 3D - Interactive E-Commerce Platform Logic
- * Optimizado para compatibilidad con GitHub Pages y Web App Mobile
- */
-
-// Base de datos de catálogo (Rutas listas para assets locales en img/)
-const productsData = [
-  {
-    id: 1,
-    name: "Figura Coleccionable Tazmanian Devil",
-    category: "coleccionables",
-    image: "img/taz.png",
-    vectorClass: "bg-taz",
-    vectorType: "taz",
-    price: 380,
-    rating: 5.0,
-    sales: 184,
-    discount: "15% OFF",
-    description: "Figura articulada con boca abierta y lengua tridimensional. Impresión multicolor detallada sobre fondo de estudio.",
-    specs: "Material: PLA+ Premium • Altura: 16cm • Acabado mate pulido"
-  },
-  {
-    id: 2,
-    name: "Set Llaveros Chimuelo (Toothless Trio)",
-    category: "coleccionables",
-    image: "img/chimuelo.png",
-    vectorClass: "bg-toothless",
-    vectorType: "chimuelo",
-    price: 190,
-    rating: 4.9,
-    sales: 320,
-    discount: "POPULAR",
-    description: "Trío de dragones coleccionables con ojos luminiscentes verde esmeralda y argolla metálica reforzada.",
-    specs: "Material: PETG ultra resistente • Ojos bi-capa • Longitud: 6cm c/u"
-  },
-  {
-    id: 3,
-    name: "Trío Marcianos Toy Story Edición Oficina",
-    category: "lifestyle",
-    image: "img/marcianos.png",
-    vectorClass: "bg-aliens",
-    vectorType: "marcianos",
-    price: 240,
-    rating: 5.0,
-    sales: 156,
-    discount: null,
-    description: "Set decorativo de marcianos saludando en posición vertical. Perfecto para organizar escritorios y repisas.",
-    specs: "Material: PLA Bi-color • Altura: 8.5cm • Base con contrapeso"
-  },
-  {
-    id: 4,
-    name: "Pantera Rosa Escultura Articulada",
-    category: "coleccionables",
-    image: "img/pantera.png",
-    vectorClass: "bg-panther",
-    vectorType: "pantera",
-    price: 310,
-    rating: 4.8,
-    sales: 98,
-    discount: "LIMITADO",
-    description: "Figura estilizada en pose pensativa con extremidades modeladas con alta fidelidad y acabado brillante.",
-    specs: "Material: PLA Rosa Neón y Blanco • Altura: 22cm"
-  },
-  {
-    id: 5,
-    name: "Busto Escultura 'Medusa' Bambu Lab",
-    category: "prototipado",
-    image: "img/medusa.png",
-    vectorClass: "bg-taz",
-    vectorType: "medusa",
-    price: 650,
-    rating: 5.0,
-    sales: 74,
-    discount: "PRO",
-    description: "Pieza compleja fabricada con soportes tipo árbol en máquinas Bambu Lab. Ideal para interiores y galerías.",
-    specs: "Resolución: 0.12mm ultrafina • Material: PLA Mármol • Altura: 24cm"
-  },
-  {
-    id: 6,
-    name: "Calabaza Jack O'Lantern Geométrica",
-    category: "temporada",
-    image: "img/calabaza.png",
-    vectorClass: "bg-taz",
-    vectorType: "calabaza",
-    price: 220,
-    rating: 4.9,
-    sales: 210,
-    discount: "TEMPORADA",
-    description: "Contenedor geométrico para dulces o velas LED de bajo voltaje. Edición especial de otoño.",
-    specs: "Material: Naranja traslúcido • Diámetro: 14cm"
-  },
-  {
-    id: 7,
-    name: "Porta Brochas & Labiales Vanity Queen",
-    category: "vanity",
-    image: "img/vanity.png",
-    vectorClass: "bg-panther",
-    vectorType: "vanity",
-    price: 280,
-    rating: 5.0,
-    sales: 115,
-    discount: null,
-    description: "Organizador para cosméticos con cavidades para brochas y labiales. Diseño minimalista pastel.",
-    specs: "Material: Polímero lavable • Ranuras: 12 posiciones"
-  },
-  {
-    id: 8,
-    name: "Placa Identificadora Mascotas con QR",
-    category: "mascotas",
-    image: "img/placa.png",
-    vectorClass: "bg-toothless",
-    vectorType: "mascota",
-    price: 150,
-    rating: 4.9,
-    sales: 450,
-    discount: "BEST SELLER",
-    description: "Placa personalizada con silueta grabada y código QR para localización de mascotas.",
-    specs: "Material: PETG indestructible • Peso pluma (8g) • Resistente al agua"
-  }
-];
-
-// Estado de la aplicación
-let activeCategory = 'all';
-let searchQuery = '';
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderSeasonalLabel();
-  renderProducts();
-  setupEventListeners();
-  setupAccordion();
-});
-
-// Ajuste dinámico de categoría estacional por mes
-function renderSeasonalLabel() {
-  const currentMonth = new Date().getMonth(); // 0 = Ene, 9 = Oct, 11 = Dic
-  const labelEl = document.getElementById('seasonalCatLabel');
-  if (currentMonth >= 8 && currentMonth <= 10) {
-    labelEl.textContent = 'Especial Halloween';
-  } else if (currentMonth === 11 || currentMonth === 0) {
-    labelEl.textContent = 'Especial Navidad';
-  } else {
-    labelEl.textContent = 'Edición Estacional';
-  }
-}
-
-// Renderizado dinámico de tarjetas
-function renderProducts() {
-  const grid = document.getElementById('productsGrid');
-  const counter = document.getElementById('productCounter');
-  
-  const filtered = productsData.filter(item => {
-    const matchesCat = (activeCategory === 'all' || item.category === activeCategory);
-    const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          item.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCat && matchesSearch;
-  });
-
-  counter.textContent = filtered.length;
-
-  if (filtered.length === 0) {
-    grid.innerHTML = `
-      <div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem;">
-        <p style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem;">No se encontraron artículos con ese criterio.</p>
-        <p style="color: var(--color-text-muted); font-size: 0.95rem;">Prueba buscando otra palabra clave o solicita una pieza a medida por WhatsApp.</p>
-      </div>
-    `;
-    return;
-  }
-
-  grid.innerHTML = filtered.map(item => `
-    <div class="product-card" data-id="${item.id}">
-      <div class="product-card-img-wrap" onclick="openProductModal(${item.id})">
-        <span class="card-category-badge">${item.category}</span>
-        ${item.discount ? `<span class="card-discount-badge">${item.discount}</span>` : ''}
-        
-        <!-- Intenta cargar la imagen real local, y si no existe muestra el fallback de estudio -->
-        <img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="vector-art-wrapper ${item.vectorClass}" style="display: none;">
-          ${renderFallbackVector(item.vectorType)}
-        </div>
-      </div>
-      
-      <div class="product-card-content">
-        <div class="product-meta-row">
-          <span class="rating-stars">★ ${item.rating.toFixed(1)}</span>
-          <span class="sales-count">${item.sales} ventas</span>
-        </div>
-        <h3 class="product-card-title">${item.name}</h3>
-        
-        <div class="product-price-row">
-          <span class="price-label">Desde</span>
-          <span class="price-amount">$${item.price} MXN</span>
-        </div>
-
-        <div class="product-card-actions">
-          <button class="btn btn-card-primary" onclick="openProductModal(${item.id})">
-            Ver Detalle & Cotizar
-          </button>
-          <button class="btn-icon-action" onclick="shareProduct(${item.id})" title="Compartir artículo">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
-// Fallbacks vectoriales con tipografía MILK KING idéntica a tus fotos de referencia
-function renderFallbackVector(type) {
-  if (type === 'taz') {
-    return `
-      <div class="watermark-text watermark-white">MILK·KING</div>
-      <svg viewBox="0 0 160 160" width="140" height="140" style="position:relative; z-index:2;">
-        <path d="M45 40 L25 15 L55 30 M115 40 L135 15 L105 30" stroke="#5a3118" stroke-width="8" stroke-linecap="round"/>
-        <path d="M30 65 Q15 40 5 60 Q20 75 35 70 M130 65 Q145 40 155 60 Q140 75 125 70" stroke="#5a3118" stroke-width="12" stroke-linecap="round" fill="none"/>
-        <circle cx="80" cy="85" r="42" fill="#5a3118"/>
-        <path d="M50 80 Q80 120 110 80 Z" fill="#e8bb87"/>
-        <path d="M56 82 Q80 110 104 82 Z" fill="#991616"/>
-        <circle cx="80" cy="74" r="8" fill="#111"/>
-        <path d="M68 95 Q80 105 92 95 Q80 88 68 95" fill="#f02424"/>
-      </svg>
-    `;
-  } else if (type === 'chimuelo') {
-    return `
-      <div class="watermark-text watermark-white">MILK·KING</div>
-      <svg viewBox="0 0 180 100" width="160" height="90" style="position:relative; z-index:2; margin-top:20px;">
-        <g transform="translate(10, 15)">
-          <path d="M15 45 Q25 15 40 45 Q30 55 15 45 Z" fill="#15171d"/>
-          <ellipse cx="26" cy="38" rx="4" ry="7" fill="#00FF66"/>
-          <ellipse cx="36" cy="38" rx="4" ry="7" fill="#00FF66"/>
-        </g>
-        <g transform="translate(65, 0)">
-          <path d="M15 55 Q30 15 45 55 Q35 65 15 55 Z" fill="#111317"/>
-          <ellipse cx="25" cy="42" rx="5" ry="8" fill="#00FF66"/>
-          <ellipse cx="37" cy="42" rx="5" ry="8" fill="#00FF66"/>
-        </g>
-        <g transform="translate(120, 15)">
-          <path d="M15 45 Q25 15 40 45 Q30 55 15 45 Z" fill="#15171d"/>
-          <ellipse cx="24" cy="38" rx="4" ry="7" fill="#00FF66"/>
-          <ellipse cx="34" cy="38" rx="4" ry="7" fill="#00FF66"/>
-        </g>
-      </svg>
-    `;
-  } else if (type === 'marcianos') {
-    return `
-      <div class="watermark-text watermark-blue">MILK·KING</div>
-      <svg viewBox="0 0 180 120" width="170" height="110" style="position:relative; z-index:2; margin-top:15px;">
-        <g transform="translate(15, 25)">
-          <ellipse cx="25" cy="30" rx="16" ry="12" fill="#4ade80"/>
-          <circle cx="18" cy="27" r="3" fill="#1e293b"/>
-          <circle cx="25" cy="26" r="3" fill="#1e293b"/>
-          <circle cx="32" cy="27" r="3" fill="#1e293b"/>
-          <path d="M12 40 L38 40 L34 65 L16 65 Z" fill="#021A54"/>
-        </g>
-        <g transform="translate(68, 25)">
-          <ellipse cx="25" cy="30" rx="16" ry="12" fill="#4ade80"/>
-          <circle cx="18" cy="27" r="3" fill="#1e293b"/>
-          <circle cx="25" cy="26" r="3" fill="#1e293b"/>
-          <circle cx="32" cy="27" r="3" fill="#1e293b"/>
-          <path d="M12 40 L38 40 L34 65 L16 65 Z" fill="#021A54"/>
-        </g>
-        <g transform="translate(120, 25)">
-          <ellipse cx="25" cy="30" rx="16" ry="12" fill="#4ade80"/>
-          <circle cx="18" cy="27" r="3" fill="#1e293b"/>
-          <circle cx="25" cy="26" r="3" fill="#1e293b"/>
-          <circle cx="32" cy="27" r="3" fill="#1e293b"/>
-          <path d="M12 40 L38 40 L34 65 L16 65 Z" fill="#021A54"/>
-        </g>
-      </svg>
-    `;
-  } else if (type === 'pantera') {
-    return `
-      <div class="watermark-text watermark-black">MILK·KING</div>
-      <svg viewBox="0 0 100 160" width="100" height="160" style="position:relative; z-index:2;">
-        <circle cx="32" cy="40" r="8" fill="#FF85BB"/>
-        <circle cx="68" cy="40" r="8" fill="#FF85BB"/>
-        <path d="M30 45 Q50 25 70 45 Q65 75 50 80 Q35 75 30 45 Z" fill="#FF85BB"/>
-        <circle cx="50" cy="55" r="5" fill="#a81145"/>
-        <line x1="20" y1="58" x2="38" y2="58" stroke="#111" stroke-width="2"/>
-        <line x1="62" y1="58" x2="80" y2="58" stroke="#111" stroke-width="2"/>
-        <path d="M42 80 L58 80 L56 140 L44 140 Z" fill="#FF85BB"/>
-      </svg>
-    `;
-  }
-  return `
-    <div class="watermark-text watermark-white">MILK·KING</div>
-    <div style="font-weight:800; color:#fff; font-size:1.1rem; z-index:2;">PROTOTIPO 3D</div>
-  `;
-}
-
-// Configuración de listeners
-function setupEventListeners() {
-  // Filtro de categorías
-  const pills = document.querySelectorAll('.cat-pill');
-  pills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      pills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      activeCategory = pill.getAttribute('data-category');
-      renderProducts();
-    });
-  });
-
-  // Buscador
-  const searchInput = document.getElementById('searchInput');
-  const clearBtn = document.getElementById('clearSearch');
-  searchInput.addEventListener('input', (e) => {
-    searchQuery = e.target.value.trim();
-    clearBtn.style.display = searchQuery.length > 0 ? 'block' : 'none';
-    renderProducts();
-  });
-
-  clearBtn.addEventListener('click', () => {
-    searchInput.value = '';
-    searchQuery = '';
-    clearBtn.style.display = 'none';
-    renderProducts();
-  });
-
-  // Modal Close
-  document.getElementById('modalCloseBtn').addEventListener('click', closeProductModal);
-  document.getElementById('productModal').addEventListener('click', (e) => {
-    if (e.target.id === 'productModal') closeProductModal();
-  });
-
-  // Formulario de Socios
-  const partnerForm = document.getElementById('partnerForm');
-  partnerForm.addEventListener('submit', handlePartnerSubmit);
-}
-
-// Modal de detalle
-function openProductModal(id) {
-  const item = productsData.find(p => p.id === id);
-  if (!item) return;
-
-  const modalBody = document.getElementById('modalBodyContent');
-  const whatsappMsg = encodeURIComponent(`Hola te escribo para cotizarte mi articulo impreso en 3D, estoy buscando: ${item.name} (${item.specs})`);
-
-  modalBody.innerHTML = `
-    <div class="modal-product-layout">
-      <div class="modal-img-col">
-        <img src="${item.image}" alt="${item.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="vector-art-wrapper ${item.vectorClass}" style="display:none; width:100%; height:100%;">
-          ${renderFallbackVector(item.vectorType)}
-        </div>
-      </div>
-      <div class="modal-info-col">
-        <span class="sub-title">${item.category.toUpperCase()}</span>
-        <h3 class="modal-title">${item.name}</h3>
-        <div class="product-meta-row" style="margin-bottom:1rem;">
-          <span class="rating-stars">★ ${item.rating.toFixed(1)} (Calificación comprobada)</span>
-          <span class="sales-count">${item.sales} piezas ordenadas</span>
-        </div>
-        <p class="modal-desc">${item.description}</p>
-        <p style="font-size:0.8rem; font-weight:700; color:var(--color-primary); margin-bottom:1.5rem;">${item.specs}</p>
-        
-        <div class="modal-actions">
-          <a href="https://wa.me/5215520810586?text=${whatsappMsg}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
-            Cotizar esta Pieza por WhatsApp
-          </a>
-          <a href="https://www.mercadolibre.com.mx" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block">
-            Comprar en Mercado Libre
-          </a>
-          <button class="btn btn-block" style="background:#F1F5F9; color:var(--color-primary);" onclick="copyProductLink(${item.id})">
-            Copiar Enlace de Producto
-          </button>
-        </div>
-      </div>
-    </div>
-  `;
-
-  document.getElementById('productModal').style.display = 'flex';
-}
-
-function closeProductModal() {
-  document.getElementById('productModal').style.display = 'none';
-}
-
-// Compartir con Web Share API o fallback
-async function shareProduct(id) {
-  const item = productsData.find(p => p.id === id);
-  if (!item) return;
-
-  const shareData = {
-    title: `MilkKing 3D - ${item.name}`,
-    text: `Mira esta pieza impresa en 3D de MilkKing: ${item.name} desde $${item.price} MXN.`,
-    url: window.location.href.split('#')[0] + `#producto-${item.id}`
-  };
-
-  if (navigator.share) {
-    try {
-      await navigator.share(shareData);
-    } catch (err) {
-      // Ignorar si el usuario canceló
-    }
-  } else {
-    copyProductLink(id);
-  }
-}
-
-function copyProductLink(id) {
-  const link = window.location.href.split('#')[0] + `#producto-${id}`;
-  navigator.clipboard.writeText(link).then(() => {
-    showToast('¡Enlace del producto copiado al portapapeles!');
-  }).catch(() => {
-    showToast('Enlace listo: ' + link);
-  });
-}
-
-function showToast(msg) {
-  const toast = document.getElementById('toastNotification');
-  toast.textContent = msg;
-  toast.style.display = 'block';
-  setTimeout(() => {
-    toast.style.display = 'none';
-  }, 3200);
-}
-
-// Manejo del acordeón FAQ
-function setupAccordion() {
-  const items = document.querySelectorAll('.accordion-item');
-  items.forEach(item => {
-    const header = item.querySelector('.accordion-header');
-    header.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      items.forEach(i => {
-        i.classList.remove('active');
-        i.querySelector('.acc-icon').textContent = '+';
-      });
-      if (!isActive) {
-        item.classList.add('active');
-        item.querySelector('.acc-icon').textContent = '−';
-      }
-    });
-  });
-}
-
-// Manejo del formulario de socios
-function handlePartnerSubmit(e) {
-  e.preventDefault();
-  const name = document.getElementById('partnerName').value;
-  const contact = document.getElementById('partnerContact').value;
-  const pieces = document.getElementById('partnerPieces').value;
-  const date = document.getElementById('partnerDate').value;
-  const category = document.getElementById('partnerCategory').value;
-  const details = document.getElementById('partnerDetails').value;
-
-  const msgText = `*Solicitud de Socio Comercial - MilkKing 3D*%0A%0A` +
-                  `*Nombre:* ${encodeURIComponent(name)}%0A` +
-                  `*Contacto:* ${encodeURIComponent(contact)}%0A` +
-                  `*Categoría:* ${encodeURIComponent(category)}%0A` +
-                  `*Cantidad:* ${encodeURIComponent(pieces)} piezas%0A` +
-                  `*Fecha Requerida:* ${encodeURIComponent(date)}%0A` +
-                  `*Detalles:* ${encodeURIComponent(details || 'Sin notas adicionales')}`;
-
-  // Abre WhatsApp con el resumen listo para enviar
-  window.open(`https://wa.me/5215520810586?text=${msgText}`, '_blank');
-
-  const feedback = document.getElementById('formSuccessMessage');
-  feedback.textContent = `¡Gracias ${name}! Hemos preparado tu solicitud para enviarla vía WhatsApp y nuestro equipo de producción revisará los requerimientos.`;
-  feedback.style.display = 'block';
-  e.target.reset();
-}
-"""
-
-readme_content = """# MilkKing 3D — Landing Page & Catálogo Interactivo
-
-Sitio web oficial y landing page interactiva desarrollada para **MilkKing 3D**, estudio especializado en diseño, prototipado y manufactura aditiva (impresión 3D).
-
----
-
-## 📁 Estructura del Repositorio
-
-```text
-├── index.html         # Estructura semántica de la landing page
-├── css/
-│   └── styles.css     # Estilos visuales, variables CSS (#021A54) y diseño responsivo
-├── js/
-│   └── app.js         # Lógica interactiva: buscador, filtros, modal, Web Share API y FAQ
-├── img/               # Carpeta para colocar tus fotografías de estudio reales
-│   ├── README.md      # Guía de nombres recomendados para tus imágenes
-│   ├── taz.png
-│   ├── chimuelo.png
-│   ├── marcianos.png
-│   ├── pantera.png
-│   └── medusa.png
-└── README.md          # Documentación general del proyecto
