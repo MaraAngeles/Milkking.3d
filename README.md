@@ -4,137 +4,131 @@ Es un landing page enfocada en promocionar articulos impresos en 3d e incentivar
 # MilkKing 3D — Landing Page & Catálogo Interactivo
 
 Landing page y plataforma web interactiva diseñada para **MilkKing 3D**, un estudio especializado en diseño, prototipado y manufactura aditiva (impresión 3D). La plataforma está optimizada para la captación y conversión de clientes minoristas, mayoristas y socios comerciales (estudiantes, profesionistas y emprendedores).
+El `README.md` se actualiza para reflejar la separación modular de archivos (`css/estilos.css`, `js/script.js` y `img/`), los nombres oficiales de las imágenes de referencia y la lista actualizada de categorías profesionales.
+
+```markdown
+# MilkKing 3D — Landing Page & Catálogo Interactivo
+
+Plataforma web oficial y catálogo interactivo de **MilkKing 3D**, estudio especializado en diseño, prototipado y manufactura aditiva (impresión 3D). La interfaz está estructurada modularmente en HTML5, CSS3 y JavaScript vanilla para facilitar su despliegue inmediato en **GitHub Pages**.
 
 ---
 
 ## 📌 Tabla de Contenidos
 
-1. [Características Principales](https://www.google.com/search?q=%23-caracter%C3%ADsticas-principales)
-2. [Identidad Visual y Paleta de Colores](https://www.google.com/search?q=%23-identidad-visual-y-paleta-de-colores)
-3. [Estructura del Proyecto](https://www.google.com/search?q=%23-estructura-del-proyecto)
-4. [Instalación y Uso](https://www.google.com/search?q=%23-instalaci%C3%B3n-y-uso)
-5. [Configuración de Imágenes Reales](https://www.google.com/search?q=%23-configuraci%C3%B3n-de-im%C3%A1genes-reales)
-6. [Canales de Integración](https://www.google.com/search?q=%23-canales-de-integraci%C3%B3n)
-7. [Tecnologías Utilizadas](https://www.google.com/search?q=%23-tecnolog%C3%ADas-utilizadas)
-
----
-
-## 🚀 Características Principales
-
-* **Buscador en Tiempo Real:** Filtrado dinámico de artículos por palabras clave conectado directamente con la sección del catálogo.
-* **Categorías Comerciales Profesionales:**
-* Coleccionables & Cultura Pop
-* Diseño de Interiores & Lifestyle
-* Línea Vanity & Estética Personal
-* Accesorios & Cuidado de Mascotas
-* Ediciones Estacionales (Halloween, Navidad, temporadas especiales)
-* Prototipado & Piezas a Medida
-
-
-* **Tarjetas de Producto con Prueba Social:** Indicadores de evaluación en 5 estrellas y métricas de piezas vendidas acumuladas.
-* **Ficha de Detalle e Interacción Móvil:**
-* Modal interactivo para inspeccionar detalles y especificaciones de la pieza.
-* Botón para copiar el enlace directo al portapapeles.
-* Integración con la **Web Share API** para compartir en aplicaciones de mensajería desde dispositivos móviles.
-
-
-* **Programa de Socios y Mayoristas:** Formulario de contacto directo estructurado con campos de piezas solicitadas, fecha estimada de entrega y canal de contacto preferido.
-* **Sección FAQ:** Acordeón interactivo con respuestas a dudas frecuentes sobre materiales, tiempos de fabricación, envíos y acabados.
-* **Diseño Responsivo:** Adaptación fluida para navegación en computadoras de escritorio y experiencia tipo Web App en teléfonos inteligentes.
-
----
-
-## 🎨 Identidad Visual y Paleta de Colores
-
-La interfaz sigue los lineamientos de contraste y balance estético de la marca:
-
-| Color | Código HEX | Rol en la Interfaz |
-| --- | --- | --- |
-| **Azul Marino Primario** | `#021A54` | Botones de acción principal (CTA), logotipo, títulos y encabezados |
-| **Rosa Intenso (Accent)** | `#FF85BB` | Badges de descuento, microinteracciones y estados hover |
-| **Rosa Suave** | `#FFCEE3` | Fondos de realce, chips secundarios y tarjetas destacadas |
-| **Gris Neutro** | `#F5F5F5` | Fondo base de la plataforma para lectura limpia |
+1. [Estructura del Proyecto](#-estructura-del-proyecto)
+2. [Identidad Visual y Paleta de Colores](#-identidad-visual-y-paleta-de-colores)
+3. [Guía de Recursos Gráficos (Carpeta `img/`)](#-guía-de-recursos-gráficos-carpeta-img)
+4. [Líneas de Producción y Categorías](#-líneas-de-producción-y-categorías)
+5. [Canales de Integración y Contacto](#-canales-de-integración-y-contacto)
+6. [Instalación y Despliegue en GitHub Pages](#-instalación-y-despliegue-en-github-pages)
 
 ---
 
 ## 📂 Estructura del Proyecto
 
+El código está desacoplado para mantener orden en el repositorio y buenas prácticas de desarrollo web:
+
 ```text
 milkking-3d/
 │
-├── index.html        # Estructura principal y maquetado de la landing page
+├── index.html         # Maquetado semántico, estructura de secciones y enlaces
 ├── css/
-│   └── styles.css    # Reglas de estilo, variables de color y diseño responsivo
+│   └── estilos.css    # Variables globales (#021A54), estilos de componentes y diseño responsivo
 ├── js/
-│   └── app.js        # Lógica del buscador, filtros, modal, Web Share API y acordeón
-└── img/
-    ├── logo.png      # Logotipo oficial MilkKing 3D
-    ├── taz.png       # Fotografía Tazmanian Devil
-    ├── chimuelo.png  # Fotografía Llaveros Chimuelo
-    ├── marcianos.png # Fotografía Trío Aliens Toy Story
-    ├── pantera.png   # Fotografía Pantera Rosa
-    └── medusa.png    # Fotografía Busto Escultura Medusa
+│   └── script.js      # Catálogo dinámico, buscador en vivo, Web Share API, modales y FAQ
+├── img/               # Directorio exclusivo para imágenes y fotografías reales
+│   ├── logo.png       # Logotipo oficial circular
+│   ├── taz.png        # Figura Tazmanian Devil
+│   ├── chimuelo.png   # Set de llaveros Chimuelo (Toothless)
+│   ├── marcianos.png  # Trío de marcianos Toy Story
+│   ├── pantera.png    # Figura Pantera Rosa
+│   ├── medusa.png     # Escultura Medusa (Bambu Lab)
+│   ├── calabaza.png   # Calabaza geométrica estacional
+│   ├── vanity.png     # Organizador porta cosméticos
+│   └── placa.png      # Placa para mascota con QR
+└── README.md          # Documentación del proyecto
 
 ```
 
 ---
 
-## ⚙️ Instalación y Uso
+## 🎨 Identidad Visual y Paleta de Colores
 
-1. **Clonar o descargar el repositorio:**
-```bash
-git clone https://github.com/tu-usuario/milkking-3d.git
-cd milkking-3d
+La plataforma utiliza una combinación de colores que asegura contraste de lectura y resalta las acciones comerciales:
 
-```
-
-
-2. **Ejecutar localmente:**
-* Al ser un desarrollo web ligero sobre tecnologías estándar (`HTML5`, `CSS3` y `JavaScript ES6+`), no requiere la instalación previa de gestores de dependencias ni compiladores.
-* Abre directamente el archivo `index.html` en cualquier navegador web moderno, o utiliza extensiones de servidor local como **Live Server** en VS Code.
-
-
+| Color | Código HEX | Aplicación en la Interfaz |
+| --- | --- | --- |
+| **Azul Marino Primario** | `#021A54` | Botones principales (CTA), isotipos, encabezados y navegación |
+| **Rosa Vibrante (Accent)** | `#FF85BB` | Etiquetas de descuento, badges de oferta y detalles de hover |
+| **Rosa Suave** | `#FFCEE3` | Fondos de realce, chips secundarios y tarjetas suaves |
+| **Gris Neutro** | `#F5F5F5` | Fondo general de la plataforma para balance visual |
 
 ---
 
-## 🖼️ Configuración de Imágenes Reales
+## 🖼️ Guía de Recursos Gráficos (Carpeta `img/`)
 
-Para vincular tus archivos fotográficos locales en lugar de las ilustraciones vectoriales por defecto:
+El archivo `js/script.js` vincula directamente los nombres de archivo dentro del directorio `img/`. Para personalizar el catálogo con tus fotos de estudio, coloca tus archivos con los siguientes nombres:
 
-1. Coloca tus imágenes dentro de la carpeta `img/`.
-2. Abre el archivo de datos en `js/app.js` (o en la sección de scripts de `index.html`) y actualiza la propiedad `image` de cada artículo con su ruta relativa:
+* `img/logo.png`: Logotipo oficial circular con fondo blanco perla.
+* `img/taz.png`: Fotografía de Taz sobre fondo de estudio oscuro.
+* `img/chimuelo.png`: Trío de llaveros Chimuelo con ojos luminiscentes verdes.
+* `img/marcianos.png`: Trío de marcianos de Toy Story sobre fondo blanco.
+* `img/pantera.png`: Escultura articulada de la Pantera Rosa.
+* `img/medusa.png`: Fotografía del busto Medusa en proceso de impresión.
 
-```javascript
-const products = [
-  {
-    id: 1,
-    name: "Figura Tazmanian Devil Colección",
-    category: "coleccionables",
-    image: "./img/taz.png", // Reemplaza aquí tu ruta local
-    price: 320,
-    rating: 5.0,
-    sales: 142
-  },
-  // ... demás productos
-];
-
-```
+> **Sistema de Respaldo Gráfico (Fallback):** Si alguna fotografía no está presente en la carpeta `img/` o presenta demoras en la carga, el script activa automáticamente una ilustración vectorial con el sello de agua oficial `MILK·KING`.
 
 ---
 
-## 📲 Canales de Integración
+## 🏷️ Líneas de Producción y Categorías
 
-* **WhatsApp Business:** Conexión directa al número `+52 55 2081 0586` mediante el esquema `wa.me`, configurado con el mensaje predefinido:
+El catálogo incluye filtros rápidos con nombres profesionales y clasificación estacional automatizada:
+
+1. **Coleccionables & Pop:** Figuras articuladas, piezas de animación y personajes de autor.
+2. **Diseño de Interiores & Lifestyle:** Decoración moderna, organizadores y piezas para el hogar u oficina.
+3. **Línea Vanity & Estética:** Organizadores para cosméticos, brochas y cuidado personal.
+4. **Accesorios para Mascotas:** Placas de identificación y complementos resistentes en PETG.
+5. **Edición Estacional:** Banner dinámico que detecta automáticamente la fecha del año (especial de Halloween en otoño o Navidad en invierno).
+6. **Prototipado a Medida:** Cotizaciones para modelado personalizado y producción de lotes especiales.
+
+---
+
+## 📲 Canales de Integración y Contacto
+
+* **WhatsApp Directo:** Botón de cotización directa vinculado a la línea `+52 55 2081 0586` con mensaje precargado:
 > *"Hola te escribo para cotizarte mi articulo impreso en 3D, estoy buscando..."*
 
 
-* **Instagram Oficial:** Redirección directa al perfil [@milkking.3d](https://www.instagram.com/milkking.3d/).
-* **Mercado Libre:** Accesos directos para compras gestionadas con garantía de entrega y meses sin intereses.
+* **Instagram Oficial:** Enlace al perfil [@milkking.3d](https://www.instagram.com/milkking.3d/).
+* **Mercado Libre:** Redirección a la tienda en línea para envíos rápidos y pagos con tarjeta.
+* **Formulario de Socios:** Módulo para emprendedores, profesionistas y estudiantes que estructura datos de piezas requeridas y fecha límite, enviándolos directo a WhatsApp.
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## 🚀 Instalación y Despliegue en GitHub Pages
 
-* **HTML5 Semántico:** Estructura optimizada para accesibilidad y posicionamiento SEO local.
-* **CSS3 Moderno:** Flexbox, CSS Grid, variables personalizadas (`CSS Custom Properties`) y media queries para breakpoints móviles.
-* **JavaScript (Vanilla ES6+):** Manipulación dinámica del DOM, gestión de eventos de búsqueda en vivo y consumo de la Web Share API nativa.
+1. **Clonar o inicializar el repositorio local:**
+```bash
+git init
+git add .
+git commit -m "feat: landing page modular MilkKing 3D"
+git branch -M main
+git remote add origin [https://github.com/](https://github.com/)<tu-usuario>/<tu-repositorio>.git
+git push -u origin main
+
+```
+
+
+2. **Habilitar GitHub Pages:**
+* Abre tu repositorio en GitHub y haz clic en **Settings**.
+* En el menú lateral izquierdo, selecciona **Pages**.
+* En **Source**, selecciona `Deploy from a branch`.
+* En **Branch**, marca `main` y la carpeta `/ (root)`.
+* Haz clic en **Save**. En un par de minutos, el sitio estará en línea en:
+`https://<tu-usuario>.github.io/<tu-repositorio>/`
+
+
+
+```
+
+```
